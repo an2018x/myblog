@@ -16,10 +16,13 @@
 
 <div class="container main-margin">
     <div class="row">
-        <div class="col-9">
+
+        <div class="col-sm-9">
             <!-- 标题及作者 -->
-            <h1 class="col-12 mt-4 mb-4">{{ article.title }}</h1>
-            <div class="col-12 alert alert-success">
+
+
+
+            <div class="col-12 alert alert-dark">
                 <div>
                     作者：{{ article.author }}
                     {% if user == article.author %}
@@ -37,6 +40,15 @@
                     <button type="submit">发送</button>
                 </form>
             </div>
+<!--            <h6 class="frontarea col-12 mt-4 mb-4">-->
+<!--                <span class="dateview">February 28, 2018</span>-->
+
+<!--                <a href="#" class="investing">Post by : Emran</a>-->
+
+<!--                <a href="#" class="investing">Investing</a>-->
+<!--            </h6>-->
+            <br>
+            <h1 class="col-12 mt-4 mb-4">{{ article.title }}</h1>
             <!-- 文章正文 -->
             <div class="col-12">
                 <p>{{ article.body|safe }}</p>
@@ -91,15 +103,33 @@
                     {% endfor %}
             </div>
         </div>
-        <div class="col-3 mt-4">
-            <h4><strong>目录</strong></h4>
-            <hr>
-            <div>
-                {{ toc|safe }}
+        <div class="d-none d-sm-block col-sm-3 mt-4 " id="sidebar" class="sidebar">
+            <div class="sidebar__inner">
+                <h4><strong>目录</strong></h4>
+                <hr>
+                <div>
+                    {{ toc|safe }}
+                </div>
             </div>
         </div>
+
     </div>
 </div>
+
+<style>
+    .sidebar{
+        will-change: min-height;
+    }
+
+    .sidebar__inner{
+        transform: translate(0, 0);
+        transform: translate3d(0, 0, 0);
+        will-change: position, transform;
+    }
+</style>
+
+
+
 
 <script>
     // 删除文章的函数
@@ -119,6 +149,14 @@
     }
 </script>
 {% block script %}
+<!-- 引入粘性侧边栏 -->
+<script src="{% static 'sticky_sidebar/jquery.sticky-sidebar.min.js' %}"></script>
+<script type="text/javascript">
+    $('#sidebar').stickySidebar({
+        topSpacing: 20,
+        bottomSpacing: 20,
+    });
+</script>
 <script>
     $(".django-ckeditor-widget").removeAttr('style');
 </script>
