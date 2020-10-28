@@ -23,6 +23,7 @@ urlpatterns = [
     path('', include('article.urls', namespace='article')),
     # 配置app的url
     path('a/', include('article.urls', namespace='article')),
+    path('infect/', include('Infection.urls',namespace='infection')),
     # 用户管理
     path('userprofile/', include('userprofile.urls', namespace='userprofile')),
     path('password-reset/',include('password_reset.urls')),

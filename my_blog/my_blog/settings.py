@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'comment',
     'taggit',
     'ckeditor',
+    'Infection',
 
 ]
 
