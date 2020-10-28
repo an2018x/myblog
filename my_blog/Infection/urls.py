@@ -5,5 +5,6 @@ app_name = 'Infection'
 from . import views
 
 urlpatterns=[
-    path('', views.processInfect, name='infection'),
+    path('chart', views.processInfect, name='infection'),
+    path('list', views.processInfect2, name='infection2')
 ]

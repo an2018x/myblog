@@ -3,9 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="95819bd0-b14d-45f3-a92f-698ae77ba61f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/article/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/article/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_blog/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_blog/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/my_blog/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/my_blog/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infection/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/Infection/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Infection/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Infection/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/graph_with_edge_options.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/graph_with_edge_options.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/infection/process.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/infection/process.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,8 +16,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
