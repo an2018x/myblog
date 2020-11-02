@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '&ba+q=t5vusliz1&53rdl^j46u!@qe8*^u++-$2ymiu4sg*__%'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["127.0.0.1","localhost","47.100.93.220",'.ancode.club']
 
@@ -157,6 +157,18 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+# SECURITY 安全设置
+# SECURITY安全设置 - 支持http时建议开启
+#SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+#SECURE_SSL_REDIRECT = True # 将所有非SSL请求永久重定向到SSL
+#SESSION_COOKIE_SECURE = True # 仅通过https传输cookie
+#CSRF_COOKIE_SECURE = True # 仅通过https传输cookie
+#SECURE_HSTS_INCLUDE_SUBDOMAINS = True # 严格要求使用https协议传输
+#SECURE_HSTS_PRELOAD = True # HSTS为
+#SECURE_HSTS_SECONDS = 60
+#SECURE_CONTENT_TYPE_NOSNIFF = True # 防止浏览器猜测资产的内容类型
 
 
 # Static files (CSS, JavaScript, Images)

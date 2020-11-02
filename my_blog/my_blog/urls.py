@@ -17,8 +17,10 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.staticfiles.views import serve
 import article.views
 urlpatterns = [
+    path('favicon.ico',serve,{'path':'static/favicon.ico'}),
     path('admin/', admin.site.urls),
     path('', include('article.urls', namespace='article')),
     # 配置app的url
