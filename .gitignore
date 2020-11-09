@@ -1,3 +1,4 @@
 my_blog/db.sqlite3
 env/
 my_blog/collected_static/
+my_blog/data.txt
