@@ -13,7 +13,7 @@
 <!-- 定义放置文章标题的div容器 -->
 <div class="container main-margin">
     <div class="row">
-        <div class="col-sm-8 cardarea">
+        <div class="col-md-8 cardarea">
 
             <!-- 列表循环 -->
             <div class="row mt-2">
@@ -98,11 +98,11 @@
                     <span class="step-links">
                         <!-- 如果不是第一页，则显示上翻按钮 -->
                         {% if articles.has_previous %}
-                            <a href="?page=1&order={{ order }}&search={{ search }}&tag={{ tag }}" class="btn btn-success">
-                                &laquo;
+                            <a href="?page=1&order={{ order }}&search={{ search }}&tag={{ tag }}" class="btn btn-info" style="border-radius: 0px">
+                                首页
                             </a>
-                            <span>...</span>
-                            <a href="?page={{ articles.previous_page_number }}&order={{ order }}&search={{ search }}&tag={{ tag }}"
+                            <span class="btn btn-default"> ...</span>
+                            <a href="?page={{ articles.previous_page_number }}&order={{ order }}&search={{ search }}&tag={{ tag }}" style="border-radius: 0px"
                                class="btn btn-secondary"
                             >
                                 {{ articles.previous_page_number }}
@@ -110,29 +110,29 @@
                         {% endif %}
 
                         <!-- 当前页面 -->
-                        <span class="current btn btn-danger">
+                        <span class="current btn btn-info " style="border-radius: 0px">
                             {{ articles.number }}
                         </span>
 
                         <!-- 如果不是最末页，则显示下翻按钮 -->
                         {% if articles.has_next %}
                             <a href="?page={{ articles.next_page_number }}&order={{ order }}&search={{ search }}&tag={{ tag }}"
-                               class="btn btn-secondary"
+                               class="btn btn-secondary" style="border-radius: 0px"
                             >
                                 {{ articles.next_page_number }}
                             </a>
-                            <span>...</span>
+                            <span class="btn btn-default">...</span>
                             <a href="?page={{ articles.paginator.num_pages }}&order={{ order }}&search={{ search }}&tag={{ tag }}"
-                               class="btn btn-success"
+                               class="btn btn-info" style="border-radius: 0px"
                             >
-                                 &raquo;
+                                 尾页
                             </a>
                         {% endif %}
                     </span>
                 </div>
             </div>
         </div>
-        <div class="col-sm-3 hidden-xs">
+        <div class="col-md-3 hidden-xs">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item">
@@ -148,24 +148,33 @@
                 </ol>
             </nav>
             <!-- 新增，搜索栏 -->
-            <div class="row">
-                <div class="col-auto mr-auto">
-                    <form class="form-inline" >
+            <div class="row" style="margin-bottom: 10px">
+                <form class="form-inline" >
+                <div class=" input-group col-auto mr-auto" style="margin-top:0px positon:relative">
+
                         <label class="sr-only">content</label>
+
+<!--                        <div class="input-group col-md-3" style="margin-top:0px positon:relative">-->
                         <input type="text"
-                            class="form-control mb-2 mr-sm-2"
+                            class="form-control"
                             name="search"
                             placeholder="搜索文章..."
                             required
                         >
-                    </form>
+                        <span class="input-group-btn">
+                           <button class="btn btn-info btn-search" style="border-radius: 0px">查找</button>
+
+                        </span>
+<!--                        </div>-->
+
                 </div>
+                </form>
             </div>
 
             <!-- 新增，搜索提示语 -->
             {% if search %}
                 {% if articles %}
-                    <h4><span style="color: red">"{{ search }}"</span>的搜索结果如下：</h4>
+                    <h4><span style="color: red">"{{ search }}"</span>的搜索结果：</h4>
                     <hr>
                 {% else %}
                     <h4>暂无<span style="color: red">"{{ search }}"</span>有关的文章。</h4>
