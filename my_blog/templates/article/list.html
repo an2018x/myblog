@@ -13,7 +13,7 @@
 <!-- 定义放置文章标题的div容器 -->
 <div class="container main-margin">
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-8 cardarea">
 
             <!-- 列表循环 -->
             <div class="row mt-2">
@@ -172,7 +172,7 @@
                     <hr>
                 {% endif %}
             {% endif %}
-            <div>
+            <div class="cardarea">
                 {% for tag in tags %}
 
                     <a href="{% url 'article:article_list' %}?tag={{ tag.name }}"

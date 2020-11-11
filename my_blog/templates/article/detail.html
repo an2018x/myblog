@@ -17,12 +17,12 @@
 <div class="container main-margin">
     <div class="row">
 
-        <div class="col-sm-9">
+        <div class="col-sm-9 cardarea">
             <!-- 标题及作者 -->
 
 
 
-            <div class="col-12 alert alert-dark">
+            <div class="col-12 alert alert-light">
                 <div>
                     作者：{{ article.author }}
                     {% if user == article.author %}
@@ -103,8 +103,8 @@
                     {% endfor %}
             </div>
         </div>
-        <div class="d-none d-sm-block col-sm-3 mt-4 " id="sidebar" class="sidebar">
-            <div class="sidebar__inner">
+        <div class="d-none d-sm-block col-sm-3 mt-4" id="sidebar" class="sidebar">
+            <div class="sidebar__inner  cardarea">
                 <h4><strong>目录</strong></h4>
                 <hr>
                 <div>

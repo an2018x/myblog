@@ -30,3 +30,15 @@
     margin-top: 100px;
 }
 
+.mainarea{
+    background-color: #f4f4f4;
+}
+
+.cardarea{
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    background: #fff;
+    padding: 20px;
+
+}

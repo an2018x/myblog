@@ -18,17 +18,19 @@
       href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css"
 >
 </head>
-<body>
+<body class="mainarea">
+
     <!--引入导航栏-->
     {% include 'header.html' %}
     <!--预留具体页面的位置-->
-    <div id="wrapper">
+    <div id="wrapper" >
         {% block content %}{% endblock content %}
         <div id="push"></div>
     </div>
 
     <!--引入注脚-->
     {% include 'footer.html' %}
+
     <!-- bootstrap.js 依赖 jquery.js 和popper.js，因此在这里引入 -->
     <script src="{% static 'jquery/jquery-3.5.1.min.js' %}"></script>
     {% include 'back_to_top_func.html' %}
