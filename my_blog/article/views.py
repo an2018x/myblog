@@ -63,6 +63,7 @@ import markdown
 def article_detail(request,id):
     # 取出相应文章
     article = ArticlePost.objects.get(id=id)
+    articleOri = ArticlePost.objects.get(id=id)
     # 取出文章评论
     comments = Comment.objects.filter(article=id)
     # 将markdown语法渲染成html样式

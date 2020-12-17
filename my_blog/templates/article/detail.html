@@ -11,9 +11,15 @@
 {% block content %}
 
 <!-- 文章详情 -->
-<script src="{% static 'ckeditor/ckeditor/plugins/prism/lib/prism/prism_patched.min.js' %}"></script>
+<!--<script src="{% static 'ckeditor/ckeditor/plugins/prism/lib/prism/prism_patched.min.js' %}"></script>-->
 <link rel="stylesheet" href="{% static 'prism/prism.css' %}">
+<script src="{% static 'prism/prism.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
+
+<!--<link href="https://myCDN.com/prism@v1.x/themes/prism.css" rel="stylesheet" />-->
+<!--<script src="https://myCDN.com/prism@v1.x/components/prism-core.min.js"></script>-->
+<!--<script src="https://myCDN.com/prism@v1.x/plugins/autoloader/prism-autoloader.min.js"></script>-->
 <div class="container main-margin">
     <div class="row">
 
@@ -24,7 +30,7 @@
 
             <div class="col-12 alert alert-light">
                 <div>
-                    作者：{{ article.author }}
+
                     {% if user == article.author %}
                         · <a href="#" onclick="confirm_delete()">删除文章</a>
                         · <a href="{% url "article:article_update" article.id %}">
@@ -32,9 +38,9 @@
                         </a>
                     {% endif %}
                 </div>
-                <div>
-                    浏览：{{ article.total_views }}
-                </div>
+<!--                <div>-->
+<!--                    浏览：{{ article.total_views }}-->
+<!--                </div>-->
                 <form style="display:none;" id="safe_delete" action="{% url 'article:article_safe_delete' article.id %}" method="POST" >
                     {% csrf_token %}
                     <button type="submit">发送</button>
@@ -48,7 +54,11 @@
 <!--                <a href="#" class="investing">Investing</a>-->
 <!--            </h6>-->
             <br>
-            <h1 class="col-12 mt-4 mb-4">{{ article.title }}</h1>
+            <center><h1 class="col-12 mt-4 mb-4" id="titlearea">{{ article.title }}</h1></center>
+
+            <div class="post-meta"><time datetime="{{ article.created|date:'Y-m-d' }}" class="post-meta-item published"><svg class="icon post-meta-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 464c0 26.5 21.5 48 48 48h352c26.5.0 48-21.5 48-48V192H0v272zm320-196c0-6.6 5.4-12 12-12h40c6.6.0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6.0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6.0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6.0-12-5.4-12-12v-40zM192 268c0-6.6 5.4-12 12-12h40c6.6.0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6.0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6.0 12 5.4 12 12v40c0 6.6-5.4 12-12 12h-40c-6.6.0-12-5.4-12-12v-40zM64 268c0-6.6 5.4-12 12-12h40c6.6.0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6.0-12-5.4-12-12v-40zm0 128c0-6.6 5.4-12 12-12h40c6.6.0 12 5.4 12 12v40c0 6.6-5.4 12-12 12H76c-6.6.0-12-5.4-12-12v-40zM4e2 64h-48V16c0-8.8-7.2-16-16-16h-32c-8.8.0-16 7.2-16 16v48H160V16c0-8.8-7.2-16-16-16h-32c-8.8.0-16 7.2-16 16v48H48C21.5 64 0 85.5.0 112v48h448v-48c0-26.5-21.5-48-48-48z"></path></svg>&nbsp;{{ article.created|date:'Y-m-d' }}</time>
+            <span class="post-meta-item category"><svg class="icon post-meta-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M572.694 292.093 500.27 416.248A63.997 63.997.0 01444.989 448H45.025c-18.523.0-30.064-20.093-20.731-36.093l72.424-124.155A64 64 0 01152 256h399.964c18.523.0 30.064 20.093 20.73 36.093zM152 224h328v-48c0-26.51-21.49-48-48-48H272l-64-64H48C21.49 64 0 85.49.0 112v278.046l69.077-118.418C86.214 242.25 117.989 224 152 224z"></path></svg>&nbsp;{{article.column}}</span></div>
+
             <!-- 文章正文 -->
             <div class="col-12">
                 <p>{{ article.body|safe }}</p>
@@ -148,7 +158,10 @@
         })
     }
 </script>
+
+{% endblock content %}
 {% block script %}
+
 <!-- 引入粘性侧边栏 -->
 <script src="{% static 'sticky_sidebar/jquery.sticky-sidebar.min.js' %}"></script>
 <script type="text/javascript">
@@ -161,4 +174,3 @@
     $(".django-ckeditor-widget").removeAttr('style');
 </script>
 {% endblock script %}
-{% endblock content %}
