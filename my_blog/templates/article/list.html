@@ -1,7 +1,8 @@
+
 <!-- extends表明此页面继承自 base.html 文件 -->
 {% extends "base.html" %}
 {% load staticfiles %}
-
+{% load tagcnt %}
 <!-- 写入 base.html 中定义的 title -->
 {% block title %}
     首页
@@ -13,12 +14,14 @@
 <!-- 定义放置文章标题的div容器 -->
 <div class="container main-margin">
     <div class="row">
-        <div class="col-md-8 cardarea">
+        <div class="col-md-9 ">
 
             <!-- 列表循环 -->
-            <div class="row mt-2">
+<!--            <div class="row mt-2">-->
                 {% for article in articles %}
                     <!-- 标题图 -->
+                    <div class="cardarea">
+                        <div class="row">
                     {% if article.avatar %}
                         <div class="col-3">
                             <img src="{{ article.avatar.url }}"
@@ -30,31 +33,35 @@
                     <!-- 文章内容 -->
                     <div class="col">
                         <!-- 栏目 -->
-                        {% if article.column %}
-                            <button type="button"
-                                class="btn btn-sm mb-2
-                                    {% if article.column.title == 'Django' %}
-                                        btn-success
-                                    {% elif article.column.title == 'Java' %}
-                                        btn-danger
-                                    {% elif article.column.title == 'HTML' %}
-                                        btn-warning
-                                    {% endif %}
-                                "
-                            >
-                                {{ article.column }}
-                            </button>
-                        {% endif %}
-                        <!-- 标签 -->
-                        <span>
-                            {% for tag in article.tags.all %}
-                                <a href="{% url 'article:article_list' %}?tag={{ tag }}"
-                                   class="badge badge-secondary"
-                                >
-                                    {{ tag }}
-                                </a>
-                            {% endfor %}
-                        </span>
+<!--                        {% if article.column %}-->
+<!--                            <button type="button"-->
+<!--                                class="btn btn-sm mb-2-->
+<!--                                    {% if article.column.title == 'Django' %}-->
+<!--                                        btn-success-->
+<!--                                    {% elif article.column.title == 'Java' %}-->
+<!--                                        btn-danger-->
+<!--                                    {% elif article.column.title == 'HTML' %}-->
+<!--                                        btn-warning-->
+<!--                                    {% endif %}-->
+<!--                                "-->
+<!--                            >-->
+<!--                                {{ article.column }}-->
+<!--                            </button>-->
+<!--                        {% endif %}-->
+<!--                        &lt;!&ndash; 标签 &ndash;&gt;-->
+<!--                        <span>-->
+<!--                            {% for tag in article.tags.all %}-->
+<!--                                <a href="{% url 'article:article_list' %}?tag={{ tag }}"-->
+<!--                                   class="badge badge-secondary"-->
+<!--                                >-->
+<!--                                    {{ article.column }}-->
+<!--                                </a>-->
+<!--                            {% endfor %}-->
+<!--                        </span>-->
+
+
+                        <br>
+
                         <!-- 标题 -->
                         <h4>
                             <b>
@@ -75,24 +82,36 @@
                         <p class="footer">
                             <!-- 附加信息，增加了图标 -->
                             <span>
-                                <i class="fas fa-eye" style="color: lightskyblue;"></i>
+                                <i class="fas fa-eye" style="color: grey;"></i>
                                 {{ article.total_views }}&nbsp;&nbsp;&nbsp;
                             </span>
                             <span>
-                                <i class="fas fa-comments" style="color: yellowgreen;"></i>
+                                <i class="fas fa-comments" style="color: grey;"></i>
                                 <!-- 修改为评论的计数 -->
                                 {{ article.comments.count }}&nbsp;&nbsp;&nbsp;
                             </span>
                             <span>
-                                <i class="fas fa-clock" style="color: pink;"></i>
+                                <i class="fas fa-clock" style="color: grey;"></i>
                                 {{ article.created|date:'Y-m-d' }}
                             </span>
-                        </p>
+                            <span class="home-article-category"><i class="fas fa-folder" style="color: grey;"></i>
+                            {{ article.column }}
+                        </span>
 
+                        <span class="home-article-tag">
+                            <i class="fas fa-tags" style="color: grey;"></i>
+                            {% for tag in article.tags.all %}
+                            <a href="{% url 'article:article_list' %}?tag={{ tag }}"
+
+                            >{{ article.column }}</a>
+                            {% endfor %}
+                        </span>
+                        </p>
                     </div>
-                    <hr style="width: 100%;"/>
+                    </div>
+                    </div>
                 {% endfor %}
-            </div>
+<!--            </div>-->
             <div class="pagination row">
                 <div class="m-auto">
                     <span class="step-links">
@@ -133,20 +152,64 @@
             </div>
         </div>
         <div class="col-md-3 hidden-xs">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="{% url 'article:article_list' %}?search={{ search }}&tag={{ tag }}">
-                            最新
-                        </a>
-                    </li>
-                    <li class="breadcrumb-item">
-                        <a href="{% url 'article:article_list' %}?order=total_views&search={{ search }}&tag={{ tag }}">
-                            最热
-                        </a>
-                    </li>
-                </ol>
-            </nav>
+<!--            <nav aria-label="breadcrumb">-->
+<!--                <ol class="breadcrumb">-->
+<!--                    <li class="breadcrumb-item">-->
+<!--                        <a href="{% url 'article:article_list' %}?search={{ search }}&tag={{ tag }}">-->
+<!--                            最新-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                    <li class="breadcrumb-item">-->
+<!--                        <a href="{% url 'article:article_list' %}?order=total_views&search={{ search }}&tag={{ tag }}">-->
+<!--                            最热-->
+<!--                        </a>-->
+<!--                    </li>-->
+<!--                </ol>-->
+<!--            </nav>-->
+
+            <div class="cardarea" data-type="profile"
+    style="transition: opacity 0.3s ease-out 0s, transform 0.3s ease-out 0s; opacity: 1; transform-origin: center top;">
+    <div class="card-content" style="padding-bottom: 2em;">
+        <nav class="level">
+            <div class="level-item has-text-centered flex-shrink-1">
+                <div>
+                    <figure class="" style="margin:1em; "><img class="rounded-circle img-fluid img-thumbnail" style="width: 100px; "
+                            src="https://animg.oss-cn-shanghai.aliyuncs.com/avater.jpg" alt="PPOffice">
+                    </figure>
+                    <p class="titlename is-size-4 is-block" style="line-height:inherit;">An</p>
+                    <p class="is-size-6 is-block">域名1个月后将会过期，如无法访问，建议直接访问 ip:47.100.93.220:80</p>
+                    <p class="is-size-6 is-flex justify-content-center"><i
+                            class="fas fa-map-marker-alt mr-1"></i><span>江苏南京</span></p>
+                </div>
+            </div>
+        </nav>
+        <nav class="level is-mobile">
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">Posts</p><a href="#">
+                        <p class="titlename">{{articlenum }}</p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">Categories</p><a href="#">
+                        <p class="titlename">{{colnum}}</p>
+                    </a>
+                </div>
+            </div>
+            <div class="level-item has-text-centered is-marginless">
+                <div>
+                    <p class="heading">Tags</p><a href="#">
+                        <p class="titlename">{{tagsnum}}</p>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+    </div>
+</div>
+
             <!-- 新增，搜索栏 -->
             <div class="row" style="margin-bottom: 10px">
                 <form class="form-inline" >
@@ -181,15 +244,17 @@
                     <hr>
                 {% endif %}
             {% endif %}
-            <div class="cardarea">
+            <div class="cardarea field is-grouped is-grouped-multiline">
                 {% for tag in tags %}
 
-                    <a href="{% url 'article:article_list' %}?tag={{ tag.name }}"
-                       class="badge badge-secondary"
-                    >
+<!--                    <a href="{% url 'article:article_list' %}?tag={{ tag.name }}"-->
+<!--                       class="badge badge-secondary"-->
+<!--                    >-->
 
-                        {{ tag.name }}
-                    </a>
+
+<!--                    </a>-->
+                <div class="control"><a class="tags has-addons" href="{% url 'article:article_list' %}?tag={{ tag.name }}"><span class="tag">{{ tag.name }}</span><span class="tag">{{ tag.name|tagcnt }}</span></a></div>
+
                 {% endfor %}
 
 

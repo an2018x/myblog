@@ -185,6 +185,7 @@ def article_list(request):
 
     # 初始化查询集
     article_list = ArticlePost.objects.all()
+    articlenum = ArticlePost.objects.all().count()
 
     # 搜索查询集
     if search:
@@ -207,18 +208,24 @@ def article_list(request):
     if order == 'total_views':
         article_list = article_list.order_by('-total_views')
 
-    paginator = Paginator(article_list, 6)
+    paginator = Paginator(article_list, 8)
     page = request.GET.get('page')
     articles = paginator.get_page(page)
+    tagsnum = Tag.objects.all().count()
     tags = Tag.objects.all()
+    colnum = ArticleColumn.objects.all().count()
     # 需要传递给模板（templates）的对象
     context = {
+        'article_list':article_list,
         'articles': articles,
         'order': order,
         'search': search,
         'column': column,
         'tag': tag,
         'tags': tags,
+        'tagsnum': tagsnum,
+        'articlenum':articlenum,
+        'colnum':colnum,
     }
 
     return render(request, 'article/list.html', context)
