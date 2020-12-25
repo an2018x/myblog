@@ -4,55 +4,31 @@
 
 <!-- 写入 base.html 中定义的 title -->
 {% block title %}
-    文章详情
+    {{ article.title }}
 {% endblock title %}
 
-<!-- 写入 base.html 中定义的 content -->
 {% block content %}
-
-<!-- 文章详情 -->
-<!--<script src="{% static 'ckeditor/ckeditor/plugins/prism/lib/prism/prism_patched.min.js' %}"></script>-->
 <link rel="stylesheet" href="{% static 'prism/prism.css' %}">
 <script src="{% static 'prism/prism.js' %}"></script>
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
-
-<!--<link href="https://myCDN.com/prism@v1.x/themes/prism.css" rel="stylesheet" />-->
-<!--<script src="https://myCDN.com/prism@v1.x/components/prism-core.min.js"></script>-->
-<!--<script src="https://myCDN.com/prism@v1.x/plugins/autoloader/prism-autoloader.min.js"></script>-->
 <div class="container main-margin">
     <div class="row">
 
         <div class="col-sm-9 cardarea">
             <!-- 标题及作者 -->
 
+            <div>
 
-
-            <div class="col-12 alert alert-light">
-                <div>
-
-                    {% if user == article.author %}
-                        · <a href="#" onclick="confirm_delete()">删除文章</a>
-                        · <a href="{% url "article:article_update" article.id %}">
-                            编辑文章
-                        </a>
-                    {% endif %}
-                </div>
-<!--                <div>-->
-<!--                    浏览：{{ article.total_views }}-->
-<!--                </div>-->
-                <form style="display:none;" id="safe_delete" action="{% url 'article:article_safe_delete' article.id %}" method="POST" >
-                    {% csrf_token %}
-                    <button type="submit">发送</button>
-                </form>
+                {% if user == article.author %}
+                    · <a href="#" onclick="confirm_delete()">删除文章</a>
+                    · <a href="{% url "article:article_update" article.id %}">
+                        编辑文章
+                    </a>
+                {% endif %}
             </div>
-<!--            <h6 class="frontarea col-12 mt-4 mb-4">-->
-<!--                <span class="dateview">February 28, 2018</span>-->
-
-<!--                <a href="#" class="investing">Post by : Emran</a>-->
-
-<!--                <a href="#" class="investing">Investing</a>-->
-<!--            </h6>-->
+            <form style="display:none;" id="safe_delete" action="{% url 'article:article_safe_delete' article.id %}" method="POST" >
+                {% csrf_token %}
+                <button type="submit">发送</button>
+            </form>
             <br>
             <center><h1 class="col-12 mt-4 mb-4" id="titlearea">{{ article.title }}</h1></center>
 
@@ -137,10 +113,6 @@
         will-change: position, transform;
     }
 </style>
-
-
-
-
 <script>
     // 删除文章的函数
     function confirm_delete() {

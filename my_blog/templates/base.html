@@ -1,46 +1,46 @@
 <!DOCTYPE html>
-
 {% load staticfiles %}
-
-
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}{% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-<!--    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">-->
     <link rel="stylesheet" href="{% static 'mycss/mycss.css' %}">
-    <!-- 引入monikai.css -->
-<!--    <link rel="stylesheet" href="{% static 'md_css/monokai.css' %}">-->
     <link rel="dns-prefetch" href="//cdn.mathjax.org" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.14.0/css/all.min.css"
 >
+
+
+    <style>
+         ::-webkit-scrollbar {
+              width: 7px;
+        }
+        ::-webkit-scrollbar-track{
+            -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+            border-radius: 0;
+            background: rgba(0,0,0,0.1);
+        }
+        ::-webkit-scrollbar-thumb{
+            border-radius: 10px;
+            -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+            background: rgba(0,0,0,0.2);
+        }
+    </style>
 </head>
 <body class="mainarea">
-    <!--引入导航栏-->
     {% include 'header.html' %}
-    <!--预留具体页面的位置-->
     <div id="wrapper">
         {% block content %}{% endblock content %}
         <div id="push"></div>
     </div>
-
-    <!--引入注脚-->
     {% include 'footer.html' %}
-
-    <!-- bootstrap.js 依赖 jquery.js 和popper.js，因此在这里引入 -->
     <script src="https://cdn.staticfile.org/jquery/3.5.1/jquery.min.js"></script>
-<!--    <script src="{% static 'jquery/jquery-3.5.1.min.js' %}"></script>-->
     {% include 'back_to_top_func.html' %}
-    <!-- 新增代码 -->
     {% block script %}{% endblock script %}
-<!--    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1-lts/dist/umd/popper.min.js"></script>-->
     <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
-    <!-- 引入bootstrap的js文件 -->
-<!--    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>-->
     <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -62,8 +62,8 @@
     MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
     </script>
     <script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <!-- 引入layer.js -->
     <script src="{% static 'layer/layer.js' %}"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
     <style>
         html, body {
             height: 100%;

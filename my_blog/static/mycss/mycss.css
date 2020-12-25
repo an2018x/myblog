@@ -34,8 +34,6 @@ table tr th:last-child,
 table tr td:last-child {
     margin-bottom: 0;
 }
-
-
 h2{
 border-left: 5px solid #ffbc41;
 padding-left: 16px;
@@ -92,17 +90,12 @@ padding-left: 10px;
     display: inline-block;
 }
 
-svg {
-    vertical-align: middle;
-}
-
+svg {vertical-align: middle;}
 a {
     color: #aaa;
-    text-decoration: none;
+    text-decoration: none !important;
     transition: all .5s;
-
 }
-
 .post-meta {
     color: #aaa;
     font-size: 80%;
@@ -110,18 +103,8 @@ a {
     margin-bottom: 2em !important;
     margin: 1rem 0;
 }
-
-body{
-    font-family: font-family: Ubuntu, Roboto, 'Open Sans', 'Microsoft YaHei', sans-serif;
-
-}
-p{
-    font-family: font-family: Ubuntu, Roboto, 'Open Sans', 'Microsoft YaHei', sans-serif;
-}
-
-.footer{
-    font-family: font-family: Ubuntu, Roboto, 'Open Sans', 'Microsoft YaHei', sans-serif;
-}
+body p{font-family: font-family: Ubuntu, Roboto, 'Open Sans', 'Microsoft YaHei', sans-serif;}
+.footer{font-family: font-family: Ubuntu, Roboto, 'Open Sans', 'Microsoft YaHei', sans-serif;}
 
 .main {
     margin: 0 auto;
@@ -325,7 +308,6 @@ figure~p{
     background: #3273dc;
     color: #fff;
 }
-
 .tag:not(body) {
     align-items: center;
     background-color: #f5f5f5;
@@ -359,7 +341,44 @@ figure~p{
     margin-right: 0.75rem;
 }
 .home-article-category{
-
     margin-left: 10px;
 }
-
+@media only screen and (min-width: 1000px) {
+    /*body{
+    background: url(https://animg.oss-cn-shanghai.aliyuncs.com/pawel-czerwinski-wtljKRoxsZE-unsplash.jpg);
+    background-repeat:no-repeat ;
+    background-size:100% ;
+    background-attachment: fixed;
+    }
+    */
+    .cardarea{
+        background-color: rgba(255,255,255,0.9);
+    }
+    .navbar{
+        background-color: rgba(255,255,255,0.9) !important;
+    }
+    .alert{
+        background-color: rgba(255,255,255,0.9) !important;
+    }
+}
+.toc>ul {
+    margin: 0;
+    margin-left:20px;
+    padding: 0;
+    width: 200px;
+    background-color: #fff;
+}
+.toc ul>li a {
+    display: block;
+    color: #aaa;
+    padding: 5px 5px;
+    text-decoration: none;
+}
+.toc ul>li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+.toc ul>li a:hover:not(.active) {
+    background-color: #3273dc;
+    color: white;
+}

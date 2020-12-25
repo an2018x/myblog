@@ -17,7 +17,6 @@
         <div class="col-md-9 ">
 
             <!-- 列表循环 -->
-<!--            <div class="row mt-2">-->
                 {% for article in articles %}
                     <!-- 标题图 -->
                     <div class="cardarea">
@@ -32,36 +31,6 @@
                     {% endif %}
                     <!-- 文章内容 -->
                     <div class="col">
-                        <!-- 栏目 -->
-<!--                        {% if article.column %}-->
-<!--                            <button type="button"-->
-<!--                                class="btn btn-sm mb-2-->
-<!--                                    {% if article.column.title == 'Django' %}-->
-<!--                                        btn-success-->
-<!--                                    {% elif article.column.title == 'Java' %}-->
-<!--                                        btn-danger-->
-<!--                                    {% elif article.column.title == 'HTML' %}-->
-<!--                                        btn-warning-->
-<!--                                    {% endif %}-->
-<!--                                "-->
-<!--                            >-->
-<!--                                {{ article.column }}-->
-<!--                            </button>-->
-<!--                        {% endif %}-->
-<!--                        &lt;!&ndash; 标签 &ndash;&gt;-->
-<!--                        <span>-->
-<!--                            {% for tag in article.tags.all %}-->
-<!--                                <a href="{% url 'article:article_list' %}?tag={{ tag }}"-->
-<!--                                   class="badge badge-secondary"-->
-<!--                                >-->
-<!--                                    {{ article.column }}-->
-<!--                                </a>-->
-<!--                            {% endfor %}-->
-<!--                        </span>-->
-
-
-                        <br>
-
                         <!-- 标题 -->
                         <h4>
                             <b>
@@ -97,21 +66,17 @@
                             <span class="home-article-category"><i class="fas fa-folder" style="color: grey;"></i>
                             {{ article.column }}
                         </span>
+                        <hr/>
+                        <div class=" field is-grouped is-grouped-multiline">
+                        {% for tag in article.tags.all %}
+                        <div class="control" ><a class="tags has-addons" href="{% url 'article:article_list' %}?tag={{ tag.name }}"><span class="tag" style="margin-bottom:0px">{{ tag.name }}</span><span class="tag" style="margin-bottom:0px">{{ tag.name|tagcnt }}</span></a></div>
+                        {% endfor %}
+                        </div>
+                            </div>
+                            </div>
+                            </div>
+                        {% endfor %}
 
-                        <span class="home-article-tag">
-                            <i class="fas fa-tags" style="color: grey;"></i>
-                            {% for tag in article.tags.all %}
-                            <a href="{% url 'article:article_list' %}?tag={{ tag }}"
-
-                            >{{ article.column }}</a>
-                            {% endfor %}
-                        </span>
-                        </p>
-                    </div>
-                    </div>
-                    </div>
-                {% endfor %}
-<!--            </div>-->
             <div class="pagination row">
                 <div class="m-auto">
                     <span class="step-links">
@@ -152,23 +117,7 @@
             </div>
         </div>
         <div class="col-md-3 hidden-xs">
-<!--            <nav aria-label="breadcrumb">-->
-<!--                <ol class="breadcrumb">-->
-<!--                    <li class="breadcrumb-item">-->
-<!--                        <a href="{% url 'article:article_list' %}?search={{ search }}&tag={{ tag }}">-->
-<!--                            最新-->
-<!--                        </a>-->
-<!--                    </li>-->
-<!--                    <li class="breadcrumb-item">-->
-<!--                        <a href="{% url 'article:article_list' %}?order=total_views&search={{ search }}&tag={{ tag }}">-->
-<!--                            最热-->
-<!--                        </a>-->
-<!--                    </li>-->
-<!--                </ol>-->
-<!--            </nav>-->
-
-            <div class="cardarea" data-type="profile"
-    style="transition: opacity 0.3s ease-out 0s, transform 0.3s ease-out 0s; opacity: 1; transform-origin: center top;">
+            <div class="cardarea" data-type="profile">
     <div class="card-content" style="padding-bottom: 2em;">
         <nav class="level">
             <div class="level-item has-text-centered flex-shrink-1">
@@ -214,10 +163,7 @@
             <div class="row" style="margin-bottom: 10px">
                 <form class="form-inline" >
                 <div class=" input-group col-auto mr-auto" style="margin-top:0px positon:relative">
-
                         <label class="sr-only">content</label>
-
-<!--                        <div class="input-group col-md-3" style="margin-top:0px positon:relative">-->
                         <input type="text"
                             class="form-control"
                             name="search"
@@ -228,8 +174,6 @@
                            <button class="btn btn-info btn-search" style="border-radius: 0px">查找</button>
 
                         </span>
-<!--                        </div>-->
-
                 </div>
                 </form>
             </div>
@@ -246,18 +190,8 @@
             {% endif %}
             <div class="cardarea field is-grouped is-grouped-multiline">
                 {% for tag in tags %}
-
-<!--                    <a href="{% url 'article:article_list' %}?tag={{ tag.name }}"-->
-<!--                       class="badge badge-secondary"-->
-<!--                    >-->
-
-
-<!--                    </a>-->
                 <div class="control"><a class="tags has-addons" href="{% url 'article:article_list' %}?tag={{ tag.name }}"><span class="tag">{{ tag.name }}</span><span class="tag">{{ tag.name|tagcnt }}</span></a></div>
-
                 {% endfor %}
-
-
             </div>
         </div>
     </div>
