@@ -6,5 +6,6 @@ from . import views
 
 urlpatterns=[
     path('chart', views.processInfect, name='infection'),
-    path('list', views.processInfect2, name='infection2')
+    path('list', views.processInfect2, name='infection2'),
+    path('', views.startgame, name='startgame')
 ]

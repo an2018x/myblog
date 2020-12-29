@@ -67,3 +67,6 @@ def processInfect2(request):
         return render(request, 'infection/list.html',context)
     elif request.method == 'GET':
         return render(request, 'infection/processList.html')
+
+def startgame(request):
+    return render(request,'game.html')
